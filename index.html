@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume_Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css">
+
+
+</head>
+
+<body>
+    <div id="cv">
+        <div class="container" id="cv-form">
+            <h1 class="text-center my-2">Resume Generator</h1>
+            <p class="text-center">By LearnCodeWith Gauhar</p>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Personal Information</h3>
+                    <div class="form-group">
+                        <label for="nameField">Your Name</label>
+                        <input type="text" id='nameField' class="form-control" placeholder="Enter your Name">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="contactField">Your Contact</label>
+                        <input type="text" id='contactField' class="form-control" placeholder="Enter your Contact">
+                    </div>
+
+                    <div class="form-group mt-2">
+                        <label for="AddressField">Your Address</label>
+                        <textarea id='addressField' class="form-control" placeholder="Enter your Address"
+                            rows="5"></textarea>
+                    </div>
+
+                    <p class="secondary-text my-3">Important Links</p>
+                    <div class="form-group mt-2">
+                        <label for="fbField">Facebook: </label>
+                        <input type="text" id='fbField' class="form-control" placeholder="Enter your profile link">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="linkedField">LinkedIn: </label>
+                        <input type="text" id='linkedField' class="form-control" placeholder="Enter your profile link">
+                    </div>
+                    <div class="form-group mt-2">
+                        <label for="instaField">Instagram: </label>
+                        <input type="text" id='instaField' class="form-control" placeholder="Enter your profile link">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h3>Professional Information</h3>
+
+                    <div class="form-group mt-2">
+                        <label for="">Objective</label>
+                        <textarea class="form-control" id="objectiveField" placeholder="Enter your Objective"
+                            rows="5"></textarea>
+                    </div>
+
+
+                    <div class="form-group mt-2" id="we">
+                        <label for="">Work Experience</label>
+                        <textarea class="form-control weField" rows="3" placeholder="Enter your Experience"></textarea>
+                        <div class="container text-center my-2 " id="weAddButton">
+                            <button onclick="addNewWEField()" class="btn btn-primary btn-sm">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group mt-2" id="aq">
+                        <label for="">Academic Qualification</label>
+                        <textarea class="form-control aqField" rows="3"
+                            placeholder="Enter your Academic Qualification"></textarea>
+                        <div class="container text-center my-2" id="aqAddButton">
+                            <button onclick="addNewAQField()" class="btn btn-primary btn-sm">
+                                Add
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container  mt-3">
+                <label for="imgField" class="custom-file-upload">Upload Photo</label>
+                <input type="file" id="imgField" accept="image/*">
+            </div>
+            <div class="container text-center mt-3">
+                <button class="btn btn-primary btn-lg" onclick="generateCV()">Generate CV</button>
+            </div>
+
+        </div>
+
+
+        <!-- cv-template -->
+
+        <div class="container" id="cv-template">
+
+            <div class="row">
+                <div class="col-md-4 text-center py-5 background">
+                    <!-- first col -->
+                    <div class="previewArea">
+                        <div id="imageContainer">
+                            <img id="imgToCrop"
+                                src="https://thumbs.dreamstime.com/b/default-profile-picture-avatar-photo-placeholder-vector-illustration-default-profile-picture-avatar-photo-placeholder-vector-189495158.jpg"
+                                alt="default-profile">
+                        </div>
+
+                        <!-- Buttons for cropping and confirming -->
+                        <button type="button" id="cropBtn">Crop Image</button>
+                        <button type="button" id="okBtn">OK</button>
+
+                        <!-- Final cropped image preview -->
+                        <div>
+                            <img id="imgT" src="" alt="Profile Photo">
+                        </div>
+
+                    </div>
+                    <div class="container">
+                        <p id="nameT1">Syed Gauhar Zaman</p>
+                        <p id="contactT">+92 333 3333333</p>
+                        <p id="addressT">Bhittaiabad Karachi</p>
+                    </div>
+                    <hr>
+
+                    <p><a id="fbT" href="#1">https://www.facebook.com/gauharzaman110</a></p>
+                    <p><a id="instaT" href="#1">https://www.instagram.com/gauharzaman110</a></p>
+                    <p><a id="linkedT" href="#1">https://www.linkedin.com/gauharzaman110</a></p>
+
+                </div>
+                <div class="col-md-8 py-5">
+                    <!-- second col -->
+                    <h1 class="text-center" style="font-weight: 900;" id="nameT2">Syed Gauhar Zaman</h1>
+
+                    <!-- objective card -->
+                    <div class="card mt-4">
+                        <div class="card-header, background p-2">
+                            <h3>Objective</h3>
+                        </div>
+                        <div class="card-body">
+                            <p id="objectiveT">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero tempora
+                                amet
+                                vel deleniti,
+                                voluptas harum nisi doloribus dignissimos itaque in veniam corrupti sit dolorem ea
+                                blanditiis fuga aperiam autem fugiat commodi quos nobis distinctio possimus! Harum
+                                quibusdam
+                                praesentium voluptatem nobis, quam dolorum earum, eos distinctio deleniti, sunt
+                                excepturi
+                                perspiciatis quod!</p>
+                        </div>
+                    </div>
+
+
+                    <!-- Work experience card -->
+                    <div class="card mt-4">
+                        <div class="card-header, background p-2">
+                            <h3>Work Experience</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul id="weT">
+                                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, sequi!</li>
+                                <li>Omnis exercitationem unde sed praesentium odit facilis dicta, magnam soluta.</li>
+                                <li>Tenetur quos dignissimos et! Corporis, a. Quaerat officia itaque enim?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    <!-- academic qualification card -->
+                    <div class="card mt-4">
+                        <div class="card-header, background p-2">
+                            <h3>Academic Qualification</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul id="aqT">
+                                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, sequi!</li>
+                                <li>Omnis exercitationem unde sed praesentium odit facilis dicta, magnam soluta.</li>
+                                <li>Tenetur quos dignissimos et! Corporis, a. Quaerat officia itaque enim?</li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+                    <div class="container mt-3 text-center">
+                        <button class="btn, background" id="printBtn" onclick="printCV()">Print CV</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

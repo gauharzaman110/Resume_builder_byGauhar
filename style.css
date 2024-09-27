@@ -1,0 +1,62 @@
+
+
+#cv-template{
+    display: none;
+}
+
+.my-image, #imgT{
+    border: 1px solid red;
+    border-radius: 50%;
+    width: 200px;
+    max-width: 150px;
+    max-height: 150px;
+    margin-top: 10px;
+    border-radius: 50%; /* Optional: make it circular */
+    object-fit: cover;  /* Keep aspect ratio */
+    object-position: top;
+}
+
+#imgToCrop{
+    border: 1px solid rgb(108, 105, 105);
+    border-radius: 50%;
+    width: 200px;
+}
+
+.background{
+    background-color: rgb(247, 235, 188);
+}
+
+
+/* Custom upload button */
+.custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.custom-file-upload:hover {
+    background-color: #0056b3;
+}
+
+/* Hide the original input */
+input[type="file"] {
+    display: none;
+}
+
+#cropBtn, #okBtn {
+    display: none;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#cropBtn:hover, #okBtn:hover {
+    background-color: #0056b3;
+}
